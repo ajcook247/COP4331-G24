@@ -16,20 +16,20 @@ body
 
 #title 
 {
-    margin-top: 40%;
+	margin-top: 40%;
 	margin-left: 25%;
 	font-size: 40px;
 }
 
 #subtitle 
 {
-    margin-left: 50%;
+	margin-left: 50%;
 	font-size: 25px;
 }
 
 #loginContainer
 {
-    background-color: #FBFBF8;
+	background-color: #FBFBF8;
 	float: right;
 	height: 100%;
 	width: 60%;
@@ -39,7 +39,7 @@ body
 
 #returningUser
 {
-    display: inline-block;
+	display: inline-block;
 	margin-left: 39%;
 	margin-top: 15%;
 	margin-bottom: 5%;
@@ -48,7 +48,7 @@ body
 
 #newUser
 {
-    display: inline-block;
+	display: inline-block;
 	margin-left: 43%;
 	margin-top: 8%;
 	margin-bottom: 5%;
@@ -61,9 +61,9 @@ body
 	border: transparent;
 	border-bottom: 3px solid #b2b2b2;
 	margin-top: 2%;
-    margin-left: 10%;
-    margin-bottom: 2%;
-    font-family: 'Ubuntu', sans-serif;
+	margin-left: 10%;
+	margin-bottom: 2%;
+	font-family: 'Ubuntu', sans-serif;
 	font-size: 30px;
 	width: 80%;
 }
@@ -71,21 +71,21 @@ body
 #registerLink
 {
 	display: inline-block;
-    margin-left: 38%;
+	margin-left: 38%;
 	margin-top: 7%;
-    font-size: 25px;
+	font-size: 25px;
 	text-underline-offset: 4px;
-    color: #000000;
+	color: #000000;
 }
 
 #signInLink
 {
 	display: inline-block;
-    margin-left: 35%;
+	margin-left: 35%;
 	margin-top: 7%;
-    font-size: 25px;
+	font-size: 25px;
 	text-underline-offset: 4px;
-    color: #000000;
+	color: #000000;
 }
 
 .buttons
@@ -94,16 +94,16 @@ body
 	border-color: #000000;
 	border-radius: 25px;
 	margin-top: 5%;
-    margin-left: 20%;
+	margin-left: 20%;
 	padding: 1%;
 	width: 60%;
-    font-family: 'Ubuntu', sans-serif;
+	font-family: 'Ubuntu', sans-serif;
 	font-size: 30px;
 }
 
 .buttons:hover
 {
-    background-color: #FFCBA4;
+	background-color: #FFCBA4;
 }
 
 :focus
