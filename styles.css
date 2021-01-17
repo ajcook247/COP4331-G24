@@ -6,13 +6,13 @@ body
 
 #titleContainer
 {
-    width: 40%;
-    height: 100;
-    color: #fff;
-    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-    background-size: 400% 400%;
-    position: relative;
-    animation: change 10s ease-in-out infinite;
+	width: 40%;
+	height: 100;
+	color: #fff;
+	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+	background-size: 400% 400%;
+	position: relative;
+	animation: change 10s ease-in-out infinite;
 }
 
 @keyframes change
@@ -76,15 +76,14 @@ body
 
 .btn.btn-flat
 {
-
-    background-color: #DBE9F4;
-    border-color: #000000;
-    border-radius: 25px;
-    width: 60%;
-    color: #000000;
-    margin-top: 2%;
-    margin-bottom: 2%;
-    font-size: 25px;
+	background-color: #DBE9F4;
+	border-color: #000000;
+	border-radius: 25px;
+	width: 60%;
+	color: #000000;
+	margin-top: 2%;
+	margin-bottom: 2%;
+	font-size: 25px;
 	border: 2px solid black;
 	height: 50px;
 	-webkit-transition: 0.9%;
