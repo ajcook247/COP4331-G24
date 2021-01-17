@@ -1,112 +1,107 @@
-body 
+body
 {
-	margin: 0px;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 30px;
 }
 
 #titleContainer
 {
-	background-image: url("background.jfif");
-	background-size: cover;
-	float: left;
-	height: 100%;
-	width: 40%;
-	font-family: 'Ubuntu', sans-serif;
-	color: #000000;
+    width: 40%;
+    height: 100;
+    color: #fff;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
+    background-size: 400% 400%;
+    position: relative;
+    animation: change 10s ease-in-out infinite;
+}
+
+@keyframes change
+{
+    0% 
+    {
+        background-position: 0 50%;
+    }
+
+    50% 
+    {
+        background-position: 100% 50%;
+    }
+
+    100% 
+    {
+        background-position: 0 50%;
+    }
 }
 
 #title 
 {
-	margin-top: 40%;
-	margin-left: 25%;
-	font-size: 40px;
+	margin-top: 50%;
+	font-size: 60px;
 }
 
 #subtitle 
 {
-	margin-left: 50%;
 	font-size: 25px;
 }
 
-#loginContainer
+#returningUser, #newUser
 {
-	background-color: #FBFBF8;
-	float: right;
-	height: 100%;
-	width: 60%;
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 30px;
+	display: block;
 }
 
-#returningUser
-{
-	display: inline-block;
-	margin-left: 39%;
-	margin-top: 15%;
-	margin-bottom: 5%;
-	color: #000000;
-}
-
-#newUser
-{
-	display: inline-block;
-	margin-left: 43%;
-	margin-top: 8%;
-	margin-bottom: 5%;
-	color: #000000;
-}
-
-#firstName, #lastName, #loginUsername, #loginPassword
+#username, #password, #name
 {
 	background-color: transparent;
 	border: transparent;
 	border-bottom: 3px solid #b2b2b2;
-	margin-top: 2%;
-	margin-left: 10%;
-	margin-bottom: 2%;
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 30px;
 	width: 80%;
+	margin-top: 2%;
+	margin-bottom: 2%;
 }
 
-#registerLink
+#homepageLink
 {
-	display: inline-block;
-	margin-left: 38%;
-	margin-top: 7%;
-	font-size: 25px;
-	text-underline-offset: 4px;
+	display: block;
+	width: fit-content;
+	margin-top: 2%;
+	font-size: 20px;
 	color: #000000;
-}
-
-#signInLink
-{
-	display: inline-block;
-	margin-left: 35%;
-	margin-top: 7%;
-	font-size: 25px;
 	text-underline-offset: 4px;
-	color: #000000;
-}
-
-.buttons
-{
-	background-color: #DBE9F4;
-	border-color: #000000;
-	border-radius: 25px;
-	margin-top: 5%;
-	margin-left: 20%;
-	padding: 1%;
-	width: 60%;
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 30px;
-}
-
-.buttons:hover
-{
-	background-color: #FFCBA4;
 }
 
 :focus
 {
 	outline: none;
+}
+
+.btn.btn-flat
+{
+
+    background-color: #DBE9F4;
+    border-color: #000000;
+    border-radius: 25px;
+    width: 60%;
+    color: #000000;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 25px;
+	border: 2px solid black;
+	height: 50px;
+	-webkit-transition: 0.9%;
+	transition: 0.9%;
+}
+
+.btn-flat.btn-primary
+{
+	color: #000000;
+	background: linear-gradient(30deg, plum 50%, transparent 50%);
+	background-position: right bottom;
+	background-size: 220% 100%
+}
+
+.btn-flat.btn-primary:hover
+{
+	background-position: left bottom;
+	border: 2px solid plum;
+	color: #fff
 }
