@@ -1,18 +1,18 @@
 body
 {
-	font-family: 'Ubuntu', sans-serif;
-	font-size: 30px;
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
 }
 
 #titleContainer
 {
-	width: 40%;
-	height: 100;
-	color: #fff;
-	background: linear-gradient(-45deg, #EE7752, #E73C7E, #23A6D5, #23D5AB);
-	background-size: 400% 400%;
-	position: relative;
-	animation: change 10s ease-in-out infinite;
+    width: 40%;
+    height: 100;
+    color: #fff;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #FF51EB, #EDE342);
+    background-size: 400% 400%;
+    position: relative;
+    animation: change 10s ease-in-out infinite;
 }
 
 @keyframes change
@@ -35,72 +35,73 @@ body
 
 #title 
 {
-	margin-top: 50%;
-	font-size: 60px;
+    margin-top: 50%;
+    font-size: 60px;
 }
 
 #subtitle 
 {
-	font-size: 25px;
+    font-size: 25px;
 }
 
 #returningUser, #newUser
 {
-	display: block;
+    display: block;
 }
 
 #username, #password, #name
 {
-	background-color: transparent;
-	border: transparent;
-	border-bottom: 3px solid #b2b2b2;
-	width: 80%;
-	margin-top: 2%;
-	margin-bottom: 2%;
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 3px solid #b2b2b2;
+    width: 80%;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 #homepageLink
 {
-	display: block;
-	width: fit-content;
-	margin-top: 2%;
-	font-size: 20px;
-	color: #000000;
-	text-underline-offset: 4px;
+    display: block;
+    width: fit-content;
+    margin-top: 2%;
+    font-size: 20px;
+    color: #000000;
+    text-underline-offset: 4px;
 }
 
 :focus
 {
-	outline: none;
+    outline: none;
 }
 
 .btn.btn-flat
 {
-	background-color: #DBE9F4;
-	border-color: #000000;
-	border-radius: 25px;
-	width: 60%;
-	color: #000000;
-	margin-top: 2%;
-	margin-bottom: 2%;
-	font-size: 25px;
-	border: 2px solid black;
-	height: 50px;
-	-webkit-transition: 0.9%;
-	transition: 0.9%;
+
+    background-color: #DBE9F4;
+    border-color: #000000;
+    border-radius: 25px;
+    width: 60%;
+    color: #000000;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    font-size: 25px;
+    border: 2px solid black;
+    height: 50px;
+    -webkit-transition: 0.9%;
+    transition: 0.9%;
 }
 
 .btn-flat.btn-primary
 {
-	color: #000000;
-	background: linear-gradient(30deg, plum 50%, transparent 50%);
-	background-position: right bottom;
-	background-size: 220% 100%
+    color: #000000;
+    background: linear-gradient(30deg, plum 50%, transparent 50%);
+    background-position: right bottom;
+    background-size: 220% 100%
 }
 
 .btn-flat.btn-primary:hover
 {
-	background-position: left bottom;
-	border: 2px solid plum;
-	color: #fff
+    background-position: left bottom;
+    border: 2px solid plum;
+    color: #fff
 }
