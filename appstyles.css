@@ -1,0 +1,51 @@
+body
+{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    margin: 0;
+}
+
+#titleContainer
+{
+    width: 40%;
+    height: 100;
+    color: #fff;
+    background: linear-gradient(-45deg, #EE7752, #E73C7E, #FF51EB, #EDE342);
+    background-size: 400% 400%;
+    position: relative;
+    animation: change 10s ease-in-out infinite;
+}
+
+@keyframes change
+{
+    0% 
+    {
+        background-position: 0 50%;
+    }
+
+    50% 
+    {
+        background-position: 100% 50%;
+    }
+
+    100% 
+    {
+        background-position: 0 50%;
+    }
+}
+
+#title 
+{
+    margin-top: 50%;
+    font-size: 60px;
+}
+
+#subtitle 
+{
+    font-size: 25px;
+}
+
+.container-fluid{
+  margin-top: 0;
+  margin-bottom: 0;
+}

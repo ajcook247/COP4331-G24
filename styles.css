@@ -51,9 +51,10 @@ body
 #returningUser, #newUser
 {
     display: block;
+    margin-top: 2%;
 }
 
-#username, #password, #name
+#username, #password, #firstName, #lastName, #registerUsername, #registerPassword
 {
     background-color: transparent;
     border: transparent;
@@ -71,6 +72,14 @@ body
     font-size: 20px;
     color: #000000;
     text-decoration: none;
+}
+
+#loginResult
+{
+    display: block;
+    margin-bottom: 5%;
+    font-size: 30px;
+    color: red;
 }
 
 :focus
