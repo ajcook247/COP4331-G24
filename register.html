@@ -21,31 +21,28 @@
                 <h2 id="subtitle">Simple. Fast. ContactMe</h2>
             </div>
             <div id= "loginContainer" class="col text-center my-auto">
+                <span id="registerResult"></span>
                 <span id="newUser">New User</span>
                 <span class="material-icons" style="font-size:36px;">
                     perm_identity
                 </span>
-                <input type="text" id="firstName" placeholder="First Name "/><br />
+                <input type="text" id="firstName" placeholder="First Name"/><br />
                 <span class="material-icons" style="font-size:36px;">
                     perm_identity
                 </span>
-                <input type="text" id="lastName" placeholder="Last Name "/><br />
+                <input type="text" id="lastName" placeholder="Last Name"/><br />
                 <span class="material-icons" style="font-size:36px;">account_circle</span> 
-                <input type="text" id="registerUsername" placeholder="Username" /> 
+                <input type="text" id="registerUsername" placeholder="Username" name='userName' /> 
                 <br />
                 <span class="material-icons" style="font-size:36px;">lock</span>
-                <input type="password" id="registerPassword" placeholder="Password" />
+                <input type="password" id="registerPassword" placeholder="Password" name='password'/>
                 <br />
 
-                <input type="checkbox" class="form-check-input" onclick="showRegistrationPassword()"> Show Password
+                <input type="checkbox" class="form-check-input" onclick=showRegistrationPassword()> Show Password
                 <br />
-                <button type="button" class="btn btn-primary btn-block btn-flat"onclick="location.href='app.html';">
+                <button type="button" class="btn btn-primary btn-block btn-flat"onclick="registerUser()"> 
                 
-                    <!-- Spaghetti Alerto: Make a function to validate login -->
                 <span class="material-icons text-center">edit</span>    Register</button>
-
-                <span id="loginResult"></span>
-
                 <a id="homepageLink" class="mx-auto" href="index.html">Sign In With Existing Account</a>
             </div>
         </div>

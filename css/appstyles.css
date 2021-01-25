@@ -45,6 +45,14 @@ body
     font-size: 25px;
 }
 
+#registerResult
+{
+    display: block;
+    margin-bottom: 5%;
+    font-size: 30px;
+    color: red;
+}
+
 .container-fluid{
   margin-top: 0;
   margin-bottom: 0;

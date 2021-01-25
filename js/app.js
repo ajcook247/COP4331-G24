@@ -9,6 +9,49 @@ var userId = 0;
 var firstName = "";
 var lastName = "";
 
+function registerUser()
+{
+	userId = 0;
+	firstName = "";
+	lastName = "";
+	
+  firstName = document.getElementById("firstName").value;
+  lastName = document.getElementById("lastName").value;
+
+  var login = document.getElementById("registerUsername").value;
+  var password = document.getElementById("registerPassword").value;
+  //	var hash = md5( password );
+
+  // This helps to ensure that none of the form 
+  // inputs are left blank.
+  if (!checkRegisterNames(firstName, lastName))
+    return;
+	
+	document.getElementById("registerResult").innerHTML = "";
+
+  // var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
+  var jsonPayload = 
+  '{"FirstName" : "' + firstName + '", "LastName" : "' + lastName + '", "Login" : "' + login + '", "Password" : "' + password + '"}';
+	var url = urlBase + '/SignUp.' + extension;
+  var xhr = new XMLHttpRequest();
+  
+  console.log(jsonPayload);
+  
+	xhr.open("POST", url, false);
+  xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+  
+	try
+	{
+		xhr.send(jsonPayload);
+		saveCookie();
+		window.location.href = "app.html";
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+}
+
 function doLogin()
 {
 	userId = 0;
@@ -17,17 +60,18 @@ function doLogin()
 	
 	var login = document.getElementById("username").value;
 	var password = document.getElementById("password").value;
-//	var hash = md5( password );
+  //	var hash = md5( password );
 	
 	document.getElementById("loginResult").innerHTML = "";
 
-//	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
+  //	var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
 	var jsonPayload = '{"Login" : "' + login + '", "Password" : "' + password + '"}';
 	var url = urlBase + '/Login.' + extension;
 
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+
 	try
 	{
 		xhr.send(jsonPayload);
@@ -38,6 +82,7 @@ function doLogin()
 		
 		if (userId < 1)
 		{
+      // Provide an error message pushing the user to register
 			document.getElementById("loginResult").innerHTML = "User/Password combination incorrect";
 			return;
 		}
@@ -51,10 +96,8 @@ function doLogin()
 	}
 	catch(err)
 	{
-    // Provide an error message pushing the user to register
 		document.getElementById("loginResult").innerHTML = err.message;
 	}
-
 }
 
 function saveCookie()
@@ -70,10 +113,12 @@ function readCookie()
 	userId = -1;
 	var data = document.cookie;
 	var splits = data.split(",");
-	for(var i = 0; i < splits.length; i++) 
+  
+  for (var i = 0; i < splits.length; i++) 
 	{
 		var thisOne = splits[i].trim();
-		var tokens = thisOne.split("=");
+    var tokens = thisOne.split("=");
+    
 		if( tokens[0] == "firstName" )
 		{
 			firstName = tokens[1];
@@ -107,7 +152,7 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
-function addColor()
+function addContact()
 {
 	var newColor = document.getElementById("colorText").value;
 	document.getElementById("colorAddResult").innerHTML = "";
@@ -136,7 +181,7 @@ function addColor()
 	
 }
 
-function searchColor()
+function searchContacts()
 {
 	var srch = document.getElementById("searchText").value;
 	document.getElementById("colorSearchResult").innerHTML = "";
@@ -155,13 +200,15 @@ function searchColor()
 		{
 			if (this.readyState == 4 && this.status == 200) 
 			{
-				document.getElementById("colorSearchResult").innerHTML = "Color(s) has been retrieved";
+        document.getElementById("colorSearchResult").innerHTML = "Contact(s) has been retrieved";
+        
 				var jsonObject = JSON.parse( xhr.responseText );
 				
-				for( var i=0; i<jsonObject.results.length; i++ )
+				for (var i = 0; i<jsonObject.results.length; i++)
 				{
-					colorList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
+          colorList += jsonObject.results[i];
+          
+					if (i < jsonObject.results.length - 1)
 					{
 						colorList += "<br />\r\n";
 					}
@@ -172,15 +219,15 @@ function searchColor()
     };
     
 		xhr.send(jsonPayload);
-	}
+  }
+  
 	catch(err)
 	{
 		document.getElementById("colorSearchResult").innerHTML = err.message;
 	}
-	
 }
 
-function showPassword() 
+function showLoginPassword() 
 {
   var x = document.getElementById("password");
 
@@ -198,4 +245,31 @@ function showRegistrationPassword()
     x.type = "text";
   else 
     x.type = "password";
+}
+
+function checkRegisterNames(firstName, lastName) 
+{
+  var isAlpha = function(ch)
+  {
+    return typeof ch === "string" && ch.length === 1 && (ch >= "a" && ch <= "z" || ch >= "A" && ch <= "Z");
+  }  
+
+  for (var i = 0; i < firstName.length; i++) {
+    if (!isAlpha(firstName[i])) {
+      document.getElementById("registerResult").innerHTML = 'First name must have alphabet characters only';
+
+      return false;
+    }
+  }
+
+  for (var j = 0; j < lastName.length; j++) {
+    if (!isAlpha(lastName[j])) {
+      document.getElementById("registerResult").innerHTML = 'Last name must have alphabet characters only';
+
+      return false;
+    }
+  }
+
+
+  return true;
 }
