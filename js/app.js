@@ -24,7 +24,7 @@ function registerUser()
 
   // This helps to ensure that none of the form 
   // inputs are left blank.
-  if (!checkRegisterNames(firstName, lastName))
+  if (!checkFormNames(firstName, lastName))
     return;
 	
 	document.getElementById("registerResult").innerHTML = "";
@@ -40,6 +40,47 @@ function registerUser()
 	xhr.open("POST", url, false);
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
   
+	try
+	{
+		xhr.send(jsonPayload);
+		saveCookie();
+		window.location.href = "app.html";
+	}
+	catch(err)
+	{
+		document.getElementById("registerResult").innerHTML = err.message;
+	}
+}
+
+function createContact()
+{
+	userId = 0;
+	firstName = "";
+	lastName = "";
+	
+	var contactFirstName = document.getElementById("contactFirstName").value;
+	var contactLastName = document.getElementById("contactLastName").value;
+
+	var contactEmail = document.getElementById("contactEmail").value;
+	var contactPhone = document.getElementById("contactPhone").value;
+	//	var hash = md5( password );
+
+	// This helps to ensure that none of the form 
+	// inputs are left blank.
+	if (!checkFormNames(contactFirstName, contactLastName))
+		return;
+	
+	document.getElementById("contactsResult").innerHTML = "";
+
+	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
+	var jsonPayload = 
+	'{"FirstName" : "' + contactFirstName + '", "LastName" : "' + contactLastName + '", "Email" : "' + contactEmail + '", "Phone" : "' + contactPhone + '"}';
+	var url = urlBase + '/SignUp.' + extension;
+	var xhr = new XMLHttpRequest();
+	
+	xhr.open("POST", url, false);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	
 	try
 	{
 		xhr.send(jsonPayload);
@@ -148,7 +189,6 @@ function doLogout()
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
 	window.location.href = "index.html";
 }
 
@@ -247,7 +287,7 @@ function showRegistrationPassword()
     x.type = "password";
 }
 
-function checkRegisterNames(firstName, lastName) 
+function checkFormNames(firstName, lastName) 
 {
   var isAlpha = function(ch)
   {
@@ -268,8 +308,15 @@ function checkRegisterNames(firstName, lastName)
 
       return false;
     }
-  }
-
-
+	}
+	
   return true;
+}
+
+function displayUserInfo()
+{
+	var loginData = document.getElementById("loginInfo");
+
+	loginData.textContent = "Logged in as: ";
+	loginData.textContent.concat(" " + firstName + " " + lastName);
 }

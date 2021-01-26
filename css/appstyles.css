@@ -7,8 +7,6 @@ body
 
 #titleContainer
 {
-    width: 40%;
-    height: 100;
     color: #fff;
     background: linear-gradient(-45deg, #EE7752, #E73C7E, #FF51EB, #EDE342);
     background-size: 400% 400%;
@@ -36,13 +34,13 @@ body
 
 #title 
 {
-    margin-top: 50%;
-    font-size: 60px;
+    margin-top: 0%;
+    font-size: 40px;
 }
 
 #subtitle 
 {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 #registerResult
@@ -56,4 +54,105 @@ body
 .container-fluid{
   margin-top: 0;
   margin-bottom: 0;
+}
+
+.logoutButton 
+{
+    border-color: transparent;
+    background-color: rgb(155, 99, 155);
+    transition-duration: 0.6s;
+}
+  
+.logoutButton:hover 
+{
+    border-color: transparent;
+    background-color: plum;
+    color: white;
+}
+
+#contactFirstName, #contactLastName, #contactEmail, #contactPhone
+{
+    background-color: transparent;
+    border: transparent;
+    border-bottom: 3px solid #b2b2b2;
+    width: 80%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+.no-gutters 
+{
+    margin-right: 0;
+    margin-left: 0;
+  
+    > .col,
+    > [class*="col-"] 
+    {
+      padding-right: 0;
+      padding-left: 0;
+    }
+}
+
+*{
+    box-sizing: border-box;
+}
+  
+form.searchBox input[type=text] 
+{
+    padding: 5px;
+    font-size: 14px;
+    border: 1px solid grey;
+    float: left;
+    width: 50%;
+    background: transparent;
+}
+
+form.searchBox button 
+{
+float: left;
+width: 20%;
+padding: 5px;
+background: transparent;
+color: white;
+font-size: 12px;
+border: 1px solid black;
+border-left: none; 
+cursor: pointer;
+}
+
+#myInput {
+background-image: url('/css/searchicon.png'); /* Add a search icon to input */
+background-position: 10px 12px; /* Position the search icon */
+background-repeat: no-repeat; /* Do not repeat the icon image */
+width: 100%; /* Full-width */
+font-size: 16px; /* Increase font-size */
+padding: 12px 20px 12px 40px; /* Add some padding */
+border: 1px solid #ddd; /* Add a grey border */
+margin-bottom: 12px; /* Add some space below the input */
+}
+  
+#contactsTable 
+{
+    border-collapse: collapse; /* Collapse borders */
+    width: 100%; /* Full-width */
+    border: 1px solid #ddd; /* Add a grey border */
+    font-size: 18px; /* Increase font-size */
+}
+
+#myTable th, #contactsTable td 
+{
+    text-align: left; /* Left-align text */
+    padding: 12px; /* Add padding */
+}
+
+#contactsTable tr 
+{
+/* Add a bottom border to all table rows */
+border-bottom: 1px solid #ddd;
+}
+
+#mycontactsTable tr.header, #contactsTable tr:hover {
+/* Add a grey background color to the table header and on hover */
+background-color: #f1f1f1;
 }
