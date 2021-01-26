@@ -5,42 +5,28 @@ body
     margin: 0;
 }
 
-#titleContainer
+#titleBar
 {
     color: #fff;
-    background: linear-gradient(-45deg, #EE7752, #E73C7E, #FF51EB, #EDE342);
-    background-size: 400% 400%;
-    position: relative;
-    animation: change 10s ease-in-out infinite;
-}
-
-@keyframes change
-{
-    0% 
-    {
-        background-position: 0 50%;
-    }
-
-    50% 
-    {
-        background-position: 100% 50%;
-    }
-
-    100% 
-    {
-        background-position: 0 50%;
-    }
+    background: #E73C7E;
+	padding-top: 1%;
+	padding-bottom: 1%;
 }
 
 #title 
 {
-    margin-top: 0%;
-    font-size: 40px;
+    display: inline;
+	font-size: 60px;
+ margin-left: 35%;
 }
 
-#subtitle 
+#userName
 {
-    font-size: 20px;
+    display: inline;
+	font-size: 30px;
+	margin-left: 20%;
+   padding-right: 20px;
+   margin-bottom: 10%;
 }
 
 #registerResult
@@ -56,16 +42,51 @@ body
   margin-bottom: 0;
 }
 
-.logoutButton 
+#logoutButton 
 {
-    border-color: transparent;
+    border-color: black;
+	border-radius: 25px;
     background-color: rgb(155, 99, 155);
-    transition-duration: 0.6s;
+    transition-duration: 0.3s;
+    font-size: 20px;
 }
   
-.logoutButton:hover 
+#logoutButton:hover 
 {
     border-color: transparent;
+    background-color: plum;
+    color: white;
+}
+
+#loginInfo
+{
+  padding-top: 8%;
+  padding-bottom: 12%;
+  margin-top: 4%;
+  border-left: 3px solid rgb(155, 99, 155);
+  border-width: 100%;
+  font-size: 30px;
+}
+
+#createContactButton
+{
+    background-color: rgb(155, 99, 155);
+    border-color: #000000;
+    border-radius: 25px;
+    width: 75%;
+    color: white;
+    margin-top: 10%;
+    font-size: 25px;
+    border: 2px solid black;
+    height: 50px;
+    -webkit-transition: 0.9%;
+    transition: 0.9%;
+    transition-duration: 0.3s;
+}
+
+#createContactButton:hover
+{
+    border: 2px solid plum;
     background-color: plum;
     color: white;
 }
@@ -76,8 +97,7 @@ body
     border: transparent;
     border-bottom: 3px solid #b2b2b2;
     width: 80%;
-    margin-top: 2%;
-    margin-bottom: 2%;
+    margin-top: 5%;
 }
 
 
@@ -98,14 +118,17 @@ body
     box-sizing: border-box;
 }
   
-form.searchBox input[type=text] 
+#contactsInput 
 {
     padding: 5px;
-    font-size: 14px;
-    border: 1px solid grey;
-    float: left;
-    width: 50%;
+    font-size: 25px;
+    border: 1px solid black;
+    width: 97%;
     background: transparent;
+    margin-left: 3%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    border-radius: 25px;
 }
 
 form.searchBox button 
@@ -135,9 +158,10 @@ margin-bottom: 12px; /* Add some space below the input */
 #contactsTable 
 {
     border-collapse: collapse; /* Collapse borders */
-    width: 100%; /* Full-width */
-    border: 1px solid #ddd; /* Add a grey border */
+    width: 97%; /* Full-width */
+    border: 1px solid #000; /* Add a grey border */
     font-size: 18px; /* Increase font-size */
+    margin-left: 3%;
 }
 
 #myTable th, #contactsTable td 
@@ -149,10 +173,15 @@ margin-bottom: 12px; /* Add some space below the input */
 #contactsTable tr 
 {
 /* Add a bottom border to all table rows */
-border-bottom: 1px solid #ddd;
+border-bottom: 1px solid #000;
 }
 
 #mycontactsTable tr.header, #contactsTable tr:hover {
 /* Add a grey background color to the table header and on hover */
 background-color: #f1f1f1;
+}
+
+:focus
+{
+    outline: none;
 }
