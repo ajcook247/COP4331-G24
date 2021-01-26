@@ -24,7 +24,7 @@ function registerUser()
 
   // This helps to ensure that none of the form 
   // inputs are left blank.
-  if (!checkFormNames(firstName, lastName))
+  if (!checkRegisterNames(firstName, lastName))
     return;
 	
 	document.getElementById("registerResult").innerHTML = "";
@@ -40,47 +40,6 @@ function registerUser()
 	xhr.open("POST", url, false);
   xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
   
-	try
-	{
-		xhr.send(jsonPayload);
-		saveCookie();
-		window.location.href = "app.html";
-	}
-	catch(err)
-	{
-		document.getElementById("registerResult").innerHTML = err.message;
-	}
-}
-
-function createContact()
-{
-	userId = 0;
-	firstName = "";
-	lastName = "";
-	
-	var contactFirstName = document.getElementById("contactFirstName").value;
-	var contactLastName = document.getElementById("contactLastName").value;
-
-	var contactEmail = document.getElementById("contactEmail").value;
-	var contactPhone = document.getElementById("contactPhone").value;
-	//	var hash = md5( password );
-
-	// This helps to ensure that none of the form 
-	// inputs are left blank.
-	if (!checkFormNames(contactFirstName, contactLastName))
-		return;
-	
-	document.getElementById("contactsResult").innerHTML = "";
-
-	// var jsonPayload = '{"login" : "' + login + '", "password" : "' + hash + '"}';
-	var jsonPayload = 
-	'{"FirstName" : "' + contactFirstName + '", "LastName" : "' + contactLastName + '", "Email" : "' + contactEmail + '", "Phone" : "' + contactPhone + '"}';
-	var url = urlBase + '/SignUp.' + extension;
-	var xhr = new XMLHttpRequest();
-	
-	xhr.open("POST", url, false);
-	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-	
 	try
 	{
 		xhr.send(jsonPayload);
@@ -128,8 +87,8 @@ function doLogin()
 			return;
 		}
 		
-		firstName = jsonObject.firstName;
-		lastName = jsonObject.lastName;
+		firstName = jsonObject.FirstName;
+		lastName = jsonObject.LastName;
 
 		saveCookie();
 	
@@ -146,7 +105,7 @@ function saveCookie()
 	var minutes = 20;
 	var date = new Date();
 	date.setTime(date.getTime()+(minutes*60*1000));	
-	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ";expires=" + date.toGMTString();
+	document.cookie = "firstName=" + firstName + ",lastName=" + lastName + ",userId=" + userId + ",expires=" + date.toGMTString();
 }
 
 function readCookie()
@@ -180,7 +139,7 @@ function readCookie()
 	}
 	else
 	{
-		document.getElementById("userName").innerHTML = "Logged in as " + firstName + " " + lastName;
+		document.getElementById("userName").innerHTML = firstName + " " + lastName;
 	}
 }
 
@@ -287,7 +246,7 @@ function showRegistrationPassword()
     x.type = "password";
 }
 
-function checkFormNames(firstName, lastName) 
+function checkRegisterNames(firstName, lastName) 
 {
   var isAlpha = function(ch)
   {
@@ -319,4 +278,5 @@ function displayUserInfo()
 
 	loginData.textContent = "Logged in as: ";
 	loginData.textContent.concat(" " + firstName + " " + lastName);
+
 }
