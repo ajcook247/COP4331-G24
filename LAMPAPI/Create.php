@@ -1,12 +1,11 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$userId = $inData["UserID"];		// Need to be static or dynamic?
+	$userId = $inData["UserID"];
 	$firstName = $inData["FirstName"];
 	$lastName = $inData["LastName"];
 	$email = $inData["Email"];
 	$phone = $inData["Phone"];
-	
 
 	$conn = new mysqli("localhost", "DatabaseAdmin", "COP4331isVeryFun", "COP4331");
 	if ($conn->connect_error) 
@@ -15,11 +14,19 @@
 	} 
 	else
 	{
-		$sql = "insert into Contacts (UserID,FirstName,LastName,Email,Phone) VALUES ('" . $userId . "','" . $firstName . "','" . $lastName . "','" . $email . "','" . $phone . "')";
+		$sql = "insert into Contacts (FirstName,LastName,Email,Phone) VALUES ('" . $firstName . "','" . $lastName . "','" . $email . "','" . $phone . "')";
 		if( $result = $conn->query($sql) != TRUE )
 		{
 			returnWithError( $conn->error );
 		}
+		
+		$lastId = $conn->insert_id;
+		$upd = "update Contacts set UserID = " . $lastId . " where FirstName = '" . $firstName . "' and LastName = '" . $lastName . "' and Email = '" . $email . "' and Phone = '" . $phone . "'";
+		if( $result2 = $conn->query($upd) != TRUE )
+		{
+			returnWithError( $conn->error );
+		}
+		
 		$conn->close();
 	}
 	
