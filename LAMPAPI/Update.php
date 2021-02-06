@@ -7,7 +7,6 @@
 	$email = $inData["Email"];
 	$phone = $inData["Phone"];
 	
-
 	$conn = new mysqli("localhost", "DatabaseAdmin", "COP4331isVeryFun", "COP4331");
 	if ($conn->connect_error) 
 	{
@@ -15,6 +14,19 @@
 	} 
 	else
 	{
+		/*
+		$q = "select ID from Contacts where UserID = '" . $userId . "' and FirstName = '" . $firstName . "' and LastName = '" . $lastName . "' and Email = '" . $email . "' and Phone = '" . $phone . "'";
+		$res = $conn->query($q);
+		
+		if ($res != TRUE)
+			returnWithError($conn->error);
+		
+		$row = $res->fetch_assoc();
+		$id = $row["ID"];
+		
+		$sql = "update Contacts set FirstName = '" . $firstName . "', LastName = '" . $lastName . "', Email = '" . $email . "', Phone = '" . $phone . "' where UserID = '" . $userId . "' and ID = " . $id . "'";
+		*/
+		
 		$sql = "update Contacts set FirstName = '" . $firstName . "', LastName = '" . $lastName . "', Email = '" . $email . "', Phone = '" . $phone . "' where UserID = '" . $userId . "'";
 		
 		if( $result = $conn->query($sql) != TRUE )
