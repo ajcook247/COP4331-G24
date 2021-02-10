@@ -2,9 +2,8 @@
 
 	$inData = getRequestInfo();
 	
-	$id = 0;
-	$firstName = "";
-	$lastName = "";
+	$searchResults = "";
+	$searchCount = 0 ;
 
 	$conn = new mysqli("localhost", "DatabaseAdmin", "COP4331isVeryFun", "COP4331");
 	if ($conn->connect_error) 
@@ -13,16 +12,20 @@
 	} 
 	else
 	{
-		$sql = "SELECT ID, FirstName, LastName FROM Contacts WHERE UserID= '" . $inData["UserID"] . "' and FirstName='" . $inData["FirstName"] . "'and LastName='" . $inData["LastName"] . "'";
+		$sql = "SELECT  FirstName, LastName FROM Contacts WHERE  FirstName LIKE '%" . $inData["FirstName"] . "%' AND LastName LIKE '%" . $inData["LastName"] . "%' " ;
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
-			$row = $result->fetch_assoc();
-			$firstName = $row["FirstName"];
-			$lastName = $row["LastName"];
-			$id = $row["ID"];
-			
-			returnWithInfo($firstName, $lastName, $id );
+			while($row = $result->fetch_assoc())
+			{
+				if( $searchCount > 0 )
+				{
+					$searchResults .= ",";
+				}
+				$searchCount++;
+				$searchResults .= '"' . $row["FirstName"] .  ' '. $row["LastName"] . '"';
+            }
+            returnWithInfo( $searchResults );
 		}
 		else
 		{
@@ -30,7 +33,9 @@
 		}
 		$conn->close();
 	}
+
 	
+
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
@@ -44,13 +49,13 @@
 	
 	function returnWithError( $err )
 	{
-		$retValue = '{"ID":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
+		$retValue = '{"FirstName":"","LastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
-	function returnWithInfo( $firstName, $lastName, $id )
+	function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '","error":""}';
+		$retValue = '{"results":[' . $searchResults . '],"error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
 	
