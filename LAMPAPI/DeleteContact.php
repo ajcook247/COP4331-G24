@@ -3,7 +3,7 @@
 	$inData = getRequestInfo();
 	
 	
-	$firstName = "";
+	  $firstName = "";
     $lastName = "";
     $userName = "";
     $password = "";
@@ -16,7 +16,7 @@
 	} 
 	else
 	{
-        $sql = "DELETE FROM Contacts WHERE UserID= '" . $inData["UserID"] . "'";
+        $sql = "DELETE FROM Contacts WHERE ID= '" . $inData["ID"] . "'";
 
         if( $result = $conn->query($sql) != TRUE )
         {
