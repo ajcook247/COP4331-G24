@@ -1,62 +1,73 @@
 <?php
 
 	$inData = getRequestInfo();
-	
-	$searchResults = "";
-	$searchCount = 0 ;
 
+	$input = $inData["Input"];
+	$userId = $inData["UserID"];
+
+
+  class Contact
+  {
+      public $contactID = "";
+      public $userID = "";
+      public $firstName = "";
+      public $lastName  = "";
+      public $email = "";
+      public $phone = "";
+  }
+
+  $users[] = array();
 	$conn = new mysqli("localhost", "DatabaseAdmin", "COP4331isVeryFun", "COP4331");
-	if ($conn->connect_error) 
+
+	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
-	} 
+	}
 	else
 	{
-		$sql = "SELECT  FirstName, LastName FROM Contacts WHERE  FirstName LIKE '%" . $inData["FirstName"] . "%' AND LastName LIKE '%" . $inData["LastName"] . "%' " ;
-		$result = $conn->query($sql);
-		if ($result->num_rows > 0)
-		{
-			while($row = $result->fetch_assoc())
-			{
-				if( $searchCount > 0 )
-				{
-					$searchResults .= ",";
-				}
-				$searchCount++;
-				$searchResults .= '"' . $row["FirstName"] .  ' '. $row["LastName"] . '"';
-            }
-            returnWithInfo( $searchResults );
-		}
-		else
-		{
-			returnWithError( "No Records Found" );
-		}
+    $result = mysqli_query($conn, "Select * from Contacts Where (UserID = $userId) AND (FirstName LIKE '%$input%' OR LastName LIKE '%$input%' OR Email LIKE '%$input%' OR Phone LIKE '%$input%')");
+
+    while ($row = mysqli_fetch_array($result))
+    {
+      $newContact = new Contact();
+
+      $newContact->contactID = $row['ID'];
+      $newContact->userID = $row['UserID'];
+      $newContact->firstName = $row['FirstName'];
+      $newContact->lastName = $row['LastName'];
+  		$newContact->email = $row['Email'];
+  		$newContact->phone = $row['Phone'];
+
+      $users[] = $newContact;
+    }
+
+    unset($users[0]);
+    sendResultInfoAsJson($users);
+
 		$conn->close();
 	}
-
-	
 
 	function getRequestInfo()
 	{
 		return json_decode(file_get_contents('php://input'), true);
 	}
 
-	function sendResultInfoAsJson( $obj )
+ 	function sendResultInfoAsJson( $obj )
 	{
 		header('Content-type: application/json');
-		echo $obj;
+		echo json_encode($obj);
 	}
-	
+
 	function returnWithError( $err )
 	{
-		$retValue = '{"FirstName":"","LastName":"","error":"' . $err . '"}';
+		$retValue = '{"ID":0,"FirstName":"","LastName":"","error":"' . $err . '"}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
-	function returnWithInfo( $searchResults )
+
+	function returnWithInfo( $firstName, $lastName, $id )
 	{
-		$retValue = '{"results":[' . $searchResults . '],"error":""}';
+		$retValue = '{"ID":' . $id . ',"FirstName":"' . $firstName . '","LastName":"' . $lastName . '","error":""}';
 		sendResultInfoAsJson( $retValue );
 	}
-	
+
 ?>
