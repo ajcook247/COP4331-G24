@@ -284,6 +284,10 @@ function updateContact(updateFirstName, updateLastName, updateEmail, updatePhone
 	// inputs are left blank.
 	if (!checkFormNames(updateFirstName, updateLastName))
 		return;
+   
+ 	// Remove any special characters in order to ensure all
+	// numbers are a 10 digit string.
+	updatePhone = updatePhone.replace(/[^\w\s]/gi, '');
 	
 	document.getElementById("updateResult").innerHTML = "";
 
@@ -356,51 +360,30 @@ function doLogout()
 function searchContacts()
 {
 	var srch = document.getElementById("contactsInput").value;
-	document.getElementById("contactsTableResult").innerHTML = "";
- 
-  var fullName = srch.split(' '),
-  firstName = fullName[0],
-  lastName = fullName[fullName.length - 1];
-	
 	var contactsList = "";
+  $("#contactsTable tbody tr").remove(); 
 	
-	var jsonPayload = '{"UserID" : "' + userId + '", "FirstName" : "' + firstName + '", "LastName" : "' + lastName + '"}';
+	var jsonPayload = '{"UserID" : "' + userId + '", "Input" : "' + srch + '"}';
 	var url = urlBase + '/Search.' + extension;
 	
 	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url, true);
+	xhr.open("POST", url, false);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 	try
-	{
-		xhr.onreadystatechange = function() 
-		{
-			if (this.readyState == 4 && this.status == 200) 
-			{
-        document.getElementById("contactsTableResult").innerHTML = "Contact(s) has been retrieved";
-        
-				var jsonObject = JSON.parse(xhr.responseText);
-				
-				for (var i = 0; i < jsonObject.results.length; i++)
-				{
-          contactsList += jsonObject.results[i];
-          
-					if (i < jsonObject.results.length - 1)
-					{
-						contactsList += "<br /> \r\n";
-					}
-				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = contactsList;
-			}
-    };
-    
+	{ 
 		xhr.send(jsonPayload);
+    contactList = JSON.parse(xhr.responseText);
   }
   
 	catch(err)
 	{
-		document.getElementById("contactsTableResult").innerHTML = err.message;
+		document.getElementById("contactsTable").innerHTML = err.message;
 	}
+ 
+ 	for (var i in contactList)
+  {
+  	addRow(contactList[i]);
+  }
 }
 
 function showLoginPassword() 
