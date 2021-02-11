@@ -4,7 +4,7 @@ COP 4331, Spring 2021
 
 body
 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 30px;
 }
 
@@ -12,11 +12,30 @@ body
 {
     width: 40%;
     height: 100%;
-    color: #fff;
-    background: linear-gradient(-45deg, #EE7752, #E73C7E, #FF51EB, #EDE342);
-    background-size: 400% 400%;
+    color: #fff; 
+    background: linear-gradient(-45deg, navy, indigo, purple, mediumVioletRed, hotPink);
+    background-size: 700% 100%;
     position: relative;
-    animation: change 10s ease-in-out infinite;
+    animation: change 15s infinite;
+}
+
+#loginContainer
+{
+    background-color: #F5F5F5;
+    padding-top: 8%;
+    height: 100%;
+}
+
+#registerContainer
+{
+    padding-top: 5%;
+    background-color: #F5F5F5;
+    height: 100%;
+}
+
+#loginCheckbox:not(:checked), #registerCheckbox:not(:checked)
+{
+  background: #F5F5F5;
 }
 
 @keyframes change
@@ -107,7 +126,7 @@ body
 .btn-flat.btn-primary
 {
     color: #000000;
-    background: linear-gradient(30deg, plum 50%, transparent 50%);
+    background: linear-gradient(30deg, #561496 50%, transparent 50%);
     background-position: right bottom;
     background-size: 220% 100%;
 }
@@ -115,6 +134,6 @@ body
 .btn-flat.btn-primary:hover
 {
     background-position: left bottom;
-    border: 2px solid plum;
+    border: 2px solid #391E94;
     color: #fff
 }
