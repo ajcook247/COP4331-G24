@@ -13,7 +13,7 @@
 	} 
 	else
 	{
-		$sql = "SELECT ID,FirstName,LastName FROM Users where Login='" . $inData["Login"] . "' and Password='" . $inData["Password"] . "'";
+		$sql = "SELECT ID,FirstName,LastName FROM Users WHERE BINARY Login='" . $inData["Login"] . "' and BINARY Password='" . $inData["Password"] . "'";
 		$result = $conn->query($sql);
 		if ($result->num_rows > 0)
 		{
