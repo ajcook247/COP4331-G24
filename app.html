@@ -1,3 +1,9 @@
+<!-- 
+Anna Malaj, Matthew Gomez
+COP 4331, Spring 2021	
+2/16/2021
+-->
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,10 +34,13 @@
 		};
    
 	</script>
-    <div class="container-fullwidth">
+    
+	<!-- Website Container -->
+	<div class="container-fullwidth">
   		<div class="row-1">
   			<div class="col">
-  				<div id= "titleBar" style="word-wrap:break-word">
+  				<!-- Title Bar -->
+				<div id= "titleBar" style="word-wrap:break-word">
   					<h1 id="title">ContactMe</h1>
   					<h1 id="userName"></h1>
   					<button id="logoutButton" type="button" onclick="doLogout()"><span class="material-icons text-center">logout</span>  Sign Out</button>
@@ -41,17 +50,20 @@
    
 		<div class="row vh-100 w-100">
 			<div class="col">
+				<!-- Create Contact Form -->
 				<div class="modal fade" id="createContactModal" tabindex="-1" role="dialog" aria-labelledby="createContactModalCenterTitle" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
                 
+							<!-- Form Title -->
 							<div class="modal-header" id="popupTitleContainer">
 							  <h5 id = "popupTitle" class="modal-title" id="createContactModalLongTitle">Create A New Contact</h5>
 							  <button type="button" id="closePopup" class="close" data-dismiss="modal" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							  </button>
 							</div>
-					  
+							
+							<!-- Form Body -->
 							<div class="modal-body">
   							<span id="contactsResult"></span>
 							  <span class="material-icons" style="font-size:36px;">
@@ -68,26 +80,30 @@
 							  <span class="material-icons" style="font-size:36px;">phone</span>
 							  <input type="text" id="contactPhone" placeholder="Phone Number" name='password'/>
 							</div>
-			
+							
+							<!-- Form Submit Button -->
 							<div class="modal-footer">
 							  <button type="button" id="createContactButton" onclick="createContact(); window.location.reload()">Create</button>
 							</div>
-              
+             
 						</div>
 					</div>
 				</div>
-
+				
+				<!-- Update Contact Form -->
 				<div class="modal fade" id="updateContactModal" tabindex="-1" role="dialog" aria-labelledby="updateContactModalCenterTitle" aria-hidden="true">
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
-                
+							
+							<!-- Form Title -->
 							<div class="modal-header" id="popupTitleContainer">
 							  <h5 id = "popupTitle" class="modal-title" id="updateContactModalLongTitle">Update Contact</h5>
 							  <button type="button" id="closePopup" class="close" data-dismiss="modal" aria-label="Close">
 							  <span aria-hidden="true">&times;</span>
 							  </button>
 							</div>
-						  
+							
+							<!-- Form Body -->
 							<div class="modal-body">
 							  <span id="updateResult"></span>
 							  <span class="material-icons" style="font-size:36px;">
@@ -104,7 +120,8 @@
 							  <span class="material-icons" style="font-size:36px;">phone</span>
 							  <input type="text" id="updatePhone" placeholder="Phone Number" name='password'/>
 							</div>
-    
+							
+							<!-- Form Submit Button -->
 							<div class="modal-footer">
 							  <button type="button" id="updateContactButton" onclick="saveUpdate(); window.location.reload()">Update</button>
 							</div>
@@ -112,10 +129,12 @@
 					</div>
 				</div>  
 				
+				<!-- Search Bar -->
 				<input type="text" id="contactsInput" class = "text-center" placeholder="Search for contacts...">
-        <button class="btn btn-sm" id="searchContactButton" onclick="searchContacts();"><span class="material-icons text-center">search</span>  Search</button>
+				<button class="btn btn-sm" id="searchContactButton" onclick="searchContacts();"><span class="material-icons text-center">search</span>  Search</button>
 				<button class="btn btn-sm" id="addContactButton" data-toggle="modal" data-target="#createContactModal"><span class="material-icons text-center">add</span>Add Contact</button>
 				
+				<!-- Contacts Table -->
 				<table id="contactsTable" class="table table-striped text-center">
 					<thead id="tableHeader">
 						<tr>
