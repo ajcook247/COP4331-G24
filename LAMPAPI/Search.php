@@ -24,7 +24,17 @@
 	} 
 	else
 	{
-    $result = mysqli_query($conn, "Select * from Contacts Where (UserID = $userId) AND (FirstName LIKE '%$input%' OR LastName LIKE '%$input%' OR Email LIKE '%$input%' OR Phone LIKE '%$input%')");
+ 
+    if (strpos($input, ' ') > 0)
+    {
+      $names = explode(" ", $input);
+     
+      $result = mysqli_query($conn, "Select * from Contacts Where (UserID = $userId) AND (FirstName LIKE '%$names[0]%' AND LastName LIKE '%$names[1]%')");
+    }
+    else
+    {
+      $result = mysqli_query($conn, "Select * from Contacts Where (UserID = $userId) AND (FirstName LIKE '%$input%' OR LastName LIKE '%$input%' OR              Email LIKE '%$input%' OR Phone LIKE '%$input%')");
+    }
    
     while($row = mysqli_fetch_array($result))
     {

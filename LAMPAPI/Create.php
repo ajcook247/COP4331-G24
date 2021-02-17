@@ -20,14 +20,6 @@
 			returnWithError( $conn->error );
 		}
 		
-		/*
-		$lastId = $conn->insert_id;
-		$upd = "update Contacts set UserID = " . $lastId . " where FirstName = '" . $firstName . "' and LastName = '" . $lastName . "' and Email = '" . $email . "' and Phone = '" . $phone . "'";
-		if( $result2 = $conn->query($upd) != TRUE )
-		{
-			returnWithError( $conn->error );
-		}
-		*/
 		$conn->close();
 	}
 	
